@@ -1,0 +1,15 @@
+{
+  "name": "seoscoreapi",
+  "version": "1.0.0",
+  "description": "Node.js client for SEO Score API — audit any URL for SEO issues with one function call",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "keywords": ["seo", "audit", "api", "seo-score", "website-audit", "seo-checker", "seo-api"],
+  "author": "SEO Score API <info@seoscoreapi.com>",
+  "license": "MIT",
+  "homepage": "https://seoscoreapi.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SeoScoreAPI/examples"
+  }
+}

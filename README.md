@@ -13,7 +13,7 @@ npm install seoscoreapi
 ```javascript
 const { signup, audit } = require("seoscoreapi");
 
-// Get a free API key (5 audits/day)
+// Get a free API key (2 audits/day)
 const key = await signup("you@example.com");
 
 // Audit any URL
@@ -34,6 +34,7 @@ result.priorities.forEach(p =>
 | `batchAudit(urls, apiKey)` | Audit multiple URLs (paid) |
 | `usage(apiKey)` | Check usage/limits |
 | `addMonitor(url, apiKey)` | Set up monitoring (paid) |
+| `scoreboardOptOut(apiKey)` | Opt in/out of public scoreboard |
 | `reportUrl(domain)` | Get shareable report URL |
 
 ## Links

@@ -1,6 +1,6 @@
 {
   "name": "seoscoreapi",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Node.js client for SEO Score API — audit any URL for SEO issues with one function call",
   "main": "index.js",
   "types": "index.d.ts",
@@ -10,6 +10,7 @@
   "homepage": "https://seoscoreapi.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SeoScoreAPI/examples"
+    "url": "https://github.com/avansledright/seoscoreapi.com",
+    "directory": "sdks/node"
   }
 }

@@ -5,9 +5,12 @@
  */
 
 const BASE_URL = "https://seoscoreapi.com";
+const VERSION = "1.1.0";
+const UA = `seoscoreapi-node/${VERSION}`;
 
 async function _fetch(path, options = {}) {
   const url = `${BASE_URL}${path}`;
+  options.headers = { "User-Agent": UA, ...options.headers };
   const res = await fetch(url, options);
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));
@@ -81,6 +84,19 @@ async function addMonitor(url, apiKey, frequency = "daily") {
 }
 
 /**
+ * Opt in or out of the public SEO scoreboard.
+ * @param {string} apiKey
+ * @param {boolean} [optOut=true] - true to hide, false to show
+ * @returns {Promise<Object>}
+ */
+async function scoreboardOptOut(apiKey, optOut = true) {
+  return _fetch(`/scoreboard/opt-out?opt_out=${optOut}`, {
+    method: "PUT",
+    headers: { "X-API-Key": apiKey },
+  });
+}
+
+/**
  * Get shareable report URL for a domain.
  * @param {string} domain
  * @returns {string}
@@ -89,4 +105,4 @@ function reportUrl(domain) {
   return `${BASE_URL}/report/${domain}`;
 }
 
-module.exports = { signup, audit, batchAudit, usage, addMonitor, reportUrl };
+module.exports = { signup, audit, batchAudit, usage, addMonitor, scoreboardOptOut, reportUrl };

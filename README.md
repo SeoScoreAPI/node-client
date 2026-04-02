@@ -13,7 +13,7 @@ npm install seoscoreapi
 ```javascript
 const { signup, audit } = require("seoscoreapi");
 
-// Get a free API key (2 audits/day)
+// Get a free API key (5 audits/day)
 const key = await signup("you@example.com");
 
 // Audit any URL

@@ -97,6 +97,22 @@ async function scoreboardOptOut(apiKey, optOut = true) {
 }
 
 /**
+ * Run a head-to-head competitive audit (Pro plan or higher).
+ * @param {string} url - Your page URL
+ * @param {string} competitorUrl - Competitor's page URL
+ * @param {string} keyword - Target keyword to compare on
+ * @param {string} apiKey - Your API key
+ * @returns {Promise<Object>} Gap score, per-check diffs, and action items
+ */
+async function competitiveAudit(url, competitorUrl, keyword, apiKey) {
+  return _fetch("/audit/competitive", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-API-Key": apiKey },
+    body: JSON.stringify({ url, competitor_url: competitorUrl, keyword }),
+  });
+}
+
+/**
  * Get shareable report URL for a domain.
  * @param {string} domain
  * @returns {string}
@@ -105,4 +121,4 @@ function reportUrl(domain) {
   return `${BASE_URL}/report/${domain}`;
 }
 
-module.exports = { signup, audit, batchAudit, usage, addMonitor, scoreboardOptOut, reportUrl };
+module.exports = { signup, audit, batchAudit, usage, addMonitor, scoreboardOptOut, competitiveAudit, reportUrl };

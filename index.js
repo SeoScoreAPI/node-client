@@ -5,7 +5,7 @@
  */
 
 const BASE_URL = "https://seoscoreapi.com";
-const VERSION = "1.1.0";
+const VERSION = "1.2.0";
 const UA = `seoscoreapi-node/${VERSION}`;
 
 async function _fetch(path, options = {}) {
@@ -121,4 +121,29 @@ function reportUrl(domain) {
   return `${BASE_URL}/report/${domain}`;
 }
 
-module.exports = { signup, audit, batchAudit, usage, addMonitor, scoreboardOptOut, competitiveAudit, reportUrl };
+/**
+ * Get historical audit scores and trend summary for a URL (Starter plan or higher).
+ * @param {string} url
+ * @param {string} apiKey
+ * @param {Object} [opts]
+ * @param {number} [opts.limit=100] - Max number of points to return (1–1000)
+ * @param {number} [opts.since] - UNIX timestamp lower bound (inclusive)
+ * @returns {Promise<Object>} timeseries + summary
+ */
+async function history(url, apiKey, opts = {}) {
+  const params = new URLSearchParams({ url, limit: String(opts.limit ?? 100) });
+  if (opts.since !== undefined) params.set("since", String(opts.since));
+  return _fetch(`/history?${params.toString()}`, { headers: { "X-API-Key": apiKey } });
+}
+
+/**
+ * List every domain audited by this key with latest score and 30-day trend (Starter plan or higher).
+ * @param {string} apiKey
+ * @returns {Promise<Array>} list of {domain, latest_score, latest_grade, trend_30d, ...}
+ */
+async function historyDomains(apiKey) {
+  const data = await _fetch("/history/domains", { headers: { "X-API-Key": apiKey } });
+  return data.domains;
+}
+
+module.exports = { signup, audit, batchAudit, usage, addMonitor, scoreboardOptOut, competitiveAudit, reportUrl, history, historyDomains };

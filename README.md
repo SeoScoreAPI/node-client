@@ -1,6 +1,6 @@
 # seoscoreapi
 
-Node.js client for [SEO Score API](https://seoscoreapi.com) — audit any URL for SEO issues with one function call. 83 checks across SEO, performance, accessibility, and AI readability, returned as scored JSON.
+Node.js client for [SEO Score API](https://seoscoreapi.com) — audit any URL for SEO issues with one function call. 80+ checks across SEO, performance, accessibility, and AI readability, returned as scored JSON.
 
 ## Install
 
@@ -11,10 +11,10 @@ npm install seoscoreapi
 ## Quick Start
 
 ```js
-const { signup, audit } = require("seoscoreapi");
+const { audit } = require("seoscoreapi");
 
-// Get a free API key (2 audits/day, no credit card)
-const key = await signup("you@example.com");
+// Get a free API key (2 audits/day, no credit card) at https://seoscoreapi.com/#signup
+const key = process.env.SEO_SCORE_API_KEY;
 
 // Run an audit
 const result = await audit("https://example.com", key);
@@ -25,7 +25,7 @@ console.log(`Score: ${result.score}/100 (${result.grade})`);
 
 | Function | Description |
 |---|---|
-| `signup(email)` | Get a free API key |
+| `signup(email)` | Starts signup: the API emails a 6-digit code. It does not return a key (known issue: this call resolves with `undefined`). Finish at [seoscoreapi.com](https://seoscoreapi.com/#signup) or with `POST /verify` |
 | `audit(url, apiKey)` | Run an SEO audit on a URL |
 | `batchAudit(urls, apiKey)` | Audit up to 10 URLs in one call (paid) |
 | `compare(urls, apiKey)` | Compare 2–5 URLs with a structured diff (Basic+) |

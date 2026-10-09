@@ -27,7 +27,7 @@
   "homepage": "https://seoscoreapi.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/avansledright/seoscoreapi.com",
+    "url": "https://github.com/SeoScoreAPI/node-client",
     "directory": "sdks/node"
   }
 }

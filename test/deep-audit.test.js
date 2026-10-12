@@ -29,7 +29,7 @@ test.afterEach(() => seo.setDeepAuditBaseUrl());
 
 test("defaults to the main host", () => {
   assert.equal(seo.getDeepAuditBaseUrl(), "https://seoscoreapi.com");
-  assert.equal(seo.VERSION, "1.5.0");
+  assert.equal(seo.VERSION, "1.7.1");
 });
 
 test("siteAudit posts to /site-audit on the main host", async () => {

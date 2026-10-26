@@ -13,7 +13,7 @@ npm install seoscoreapi
 ```js
 const { audit } = require("seoscoreapi");
 
-// Get a free API key (2 audits/day, no credit card) at https://seoscoreapi.com/#signup
+// Get a free API key (20 audits a month, no credit card) at https://seoscoreapi.com/#signup
 const key = process.env.SEO_SCORE_API_KEY;
 
 // Run an audit
